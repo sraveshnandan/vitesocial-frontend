@@ -1,17 +1,15 @@
 import { Link } from "react-router-dom";
 import Avatar from "../components/Avatar";
 import Card from "../components/Card";
-import PostCard from "../components/PostCard";
 import Layout from "../components/Layouts/Layout";
-import { useEffect, useState } from "react";
-import AboutCard from "../components/AboutCard";
+import {  useState } from "react";
+
 
 
 export const ProfilePage = () => {
-  const [path, setpath] = useState(window.location.hash);
+  const [path] = useState(window.location.hash);
 console.log(path);
 
-let url = window.location.hash;
 const url2 = window.location.href;
 console.log(url2)
 // css classes 

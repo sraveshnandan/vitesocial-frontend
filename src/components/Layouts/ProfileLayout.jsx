@@ -7,8 +7,9 @@ import {   useState } from "react";
 
 
 
+// eslint-disable-next-line react/prop-types
 export const ProfileLayout = ({children}) => {
-  const [path, setpath] = useState(window.location.pathname);
+  const [path] = useState(window.location.pathname);
 
 // css classes 
   const activeClass = ' items-center flex gap-1 px-3 bg-sky-400  text-white rounded-full  font-semibold';
@@ -33,7 +34,7 @@ export const ProfileLayout = ({children}) => {
               <br />
               <span className="text-slate-500 leading-4 text-sm">State, Country</span>
             </div>
-            {/* Profile controll  */}
+            {/* Profile control  */}
 
             <div className="flex pb-0 gap-2 pt-3 mt-2">
               <Link to="/profile/posts" className={path === '/profile/posts' ? activeClass : inActiveClass}> <span>📄</span>Posts</Link>

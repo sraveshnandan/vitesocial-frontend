@@ -1,12 +1,11 @@
-import Card from "../components/Card";
+
 import Layout from "../components/Layouts/Layout";
 import Msg from "../components/Notification"
 
 
 export default function Notification() {
   console.log(Msg)
-  const action = 'comment'
-  return (
+    return (
 
     <Layout>
       <div className="mb-5">

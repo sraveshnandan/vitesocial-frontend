@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/prop-types
 export default function Avatar({size}) {
   let  dimension = 'w-14 h-14';
   if(size === 'md'){

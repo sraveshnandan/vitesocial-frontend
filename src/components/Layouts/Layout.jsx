@@ -3,7 +3,8 @@ import NavigationPanel from "../NavigationPanel";
 import { Recomended } from "../Recomended";
 import Trending from "../Trending";
 
-export default function Layout ({children, hideNavigation}){
+// eslint-disable-next-line react/prop-types
+export default function Layout ({children}){
   return(
    <>
    <div className="w-full md:w-6xl mx-auto  -mb-2">

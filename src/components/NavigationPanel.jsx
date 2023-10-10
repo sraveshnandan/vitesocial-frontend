@@ -3,7 +3,7 @@ import Card from "./Card";
 import { useState } from "react";
 export default function NavigationPanel() {
 
-  const [path, setpath] = useState(window.location.pathname);
+  const [path] = useState(window.location.pathname);
 
   const activeClass = 'md:text-md text-sm flex md:gap-2 py-3 font-semibold bg-sky-400 shadow-lg md:-mx-6 md:px-8 md:px-8 px-5 text-white rounded-md ';
 
@@ -13,7 +13,7 @@ export default function NavigationPanel() {
 
   return (
     <Card>
-      <div className="flex md:block md:block justify-between">
+      <div className="flex  md:block justify-between">
         <h2 className=" md:block hidden text-slate-400 text-sm font-semibold mb-2">Navigation</h2>
         <Link to="/" className={path === '/' ? activeClass : inActiveClass}> 🏠 <span className="hidden md:block">Home</span></Link>
         <Link to="/profile" className={path === '/profile' || path === '/profile/posts' || path === '/profile/about' || path === '/profile/friends' || path === '/profile/photos' ? activeClass : inActiveClass}> 👩 <span className="hidden md:block">Account</span></Link>

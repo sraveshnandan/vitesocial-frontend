@@ -1,5 +1,3 @@
-
-import Card from "../components/Card";
 import { ProfileLayout } from "../components/Layouts/ProfileLayout";
 import PhotoCard from "../components/PhotoCard";
 
