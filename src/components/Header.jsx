@@ -10,7 +10,7 @@ export const Header = () => {
           <div className=" w-full md:px-10 flex items-center justify-between  ">
 
             <div className="logo">
-              <Link to="/"><span className="text-2xl font-semibold text-slate-600 hover:text-sky-400">✋Social </span></Link>
+              <Link to="/"><span className="text-2xl font-semibold text-slate-600 hover:text-sky-400">🏆 Social </span></Link>
             </div>
 
             <div className="links">
