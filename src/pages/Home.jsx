@@ -9,6 +9,7 @@ import axios from "axios";
 
 export const HomePage = () => {
     const {Profile, posts} = useContext(UserContext);
+    console.log(posts)
     //this is for testing purpose
     if (Profile !== undefined ) {
         return (

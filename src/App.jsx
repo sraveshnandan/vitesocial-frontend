@@ -20,67 +20,75 @@ function App() {
 
     const navigate = useNavigate();
     //axios configuration
-    axios.defaults.baseURL = "https://vitesocial-backend-server.onrender.com";
+    axios.defaults.baseURL = "http://127.0.0.1:8000";
     axios.defaults.withCredentials = true;
-        //Context configurations
-    const {  setUsers ,setProfile, Profile, setPosts, setMyposts} = useContext(UserContext);
+    //Context configurations
+    const {setUsers, setProfile, setPosts, setMyposts} = useContext(UserContext);
 
 
     //fetch user's account details
-    const fetchUserProfile = ()=>{
-        axios.get("/user/profile").then(data => {
-            if (data.data.success === false){
-                //when user's profile in not fetched
-                navigate("/login")
+    const fetchUserProfile = async () => {
+        try {
+            const {data} = await axios.get("/user/profile");
+            console.log(data)
+            if (data.success === true){
+                setProfile(data.details);
+                console.log("Profile fetched successfully.")
             }
-            const profileData = data.data.details;
-            setProfile(profileData);
-            console.log("Logged-in users profile details fetched successfully.")
-        }).
-        catch(err => alert(err))
+
+        } catch (error) {
+            console.log(error)
+
+        }
+
     }
 
     //fetching all users
 
-    const getAllUsers = ()=>{
+    const getAllUsers = () => {
         axios.get("/all/users").then(data => {
             const root = data.data.details;
-            setUsers(root);
-            console.log("All users fetched successfully.")
+
+                setUsers(root)
+
+
         })
     }
 //fetching all posts
 
 
-    const fetchAllPosts =()=>{
-        axios.get("/posts/all").then(root=>{
-            setPosts(root.data.data);
-            console.log("All posts fetched successfully.")
+    const fetchAllPosts = () => {
+        axios.get("/posts/all").then(root => {
+
+
+                setPosts(root.data.data);
+                console.log("All posts fetched successfully.")
+
         })
     }
 
 
     //fetching all users own posts
 
-    const fetchUserPost = ()=>{
-        axios.get("/user/mypost").then(data=>{
-            setMyposts(data.data.posts);
-            console.log("All users own post fetched successfully.")
+    const fetchUserPost = () => {
+        axios.get("/user/mypost").then(data => {
+
+
+
+                setMyposts(data.data.posts);
+                console.log("All users own post fetched successfully.")
+
         })
     }
     //Main useEffect function
-    useEffect(()=>{
+    useEffect(() => {
         fetchUserProfile();
         getAllUsers();
         fetchAllPosts();
         fetchUserPost();
-    },[]);
-
-       
-   
+    }, []);
 
 
-  
     return (
         <>
             <Routes>

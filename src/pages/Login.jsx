@@ -1,27 +1,28 @@
 import {useState} from "react";
 import {Header} from "../components/Header";
-import {Link, Navigate} from "react-router-dom";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import axios from "axios";
 
 
 const LoginPage = () => {
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
+    const navigate = useNavigate();
 
     const loginWithGoogle = (ev) => {
         console.log(ev)
 
 
     }
+
+
     const handleLoginFunction = async (ev) => {
         ev.preventDefault();
-
-        const response = await axios.post("/user/login", {username, password});
-        if (response.data.success === true){
-            return window.location.replace("http://localhost:5173/")
-        }
-        else {
-            alert(response.data.message)
+        console.log(username,password);
+        const {data}= await axios.post("/user/login", {username,password});
+        if (data.success === true) {
+            window.location.replace("/");
+            
         }
     };
     return (
