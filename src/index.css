@@ -8,15 +8,13 @@
   box-sizing: border-box;
 }
 body{
-  min-width: 100vw;
+  max-width: 100vw;
   background-color: #f5f7f8;
 }
-::-webkit-scrollbar{
-  background-color: rgba(211, 203, 203, 0.32);
-  border-radius: 12px;
-  padding: 2px;
+body::-webkit-scrollbar {
+  width: 5px;
 }
-::-webkit-scrollbar-thumb{
-  background-color: #333;
+body::-webkit-scrollbar-thumb{
+  background-color: #f7f6f7;
   border-radius: 12px;
 }

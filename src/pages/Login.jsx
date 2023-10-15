@@ -1,23 +1,28 @@
 import {useState} from "react";
 import {Header} from "../components/Header";
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
+import axios from "axios";
 
 
 const LoginPage = () => {
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
 
-    let data = {};
-    data.username = username;
-    data.password = password;
-
     const loginWithGoogle = (ev) => {
         console.log(ev)
+
 
     }
     const handleLoginFunction = async (ev) => {
         ev.preventDefault();
 
+        const response = await axios.post("/user/login", {username, password});
+        if (response.data.success === true){
+            return window.location.replace("http://localhost:5173/")
+        }
+        else {
+            alert(response.data.message)
+        }
     };
     return (
         <>
@@ -61,7 +66,7 @@ const LoginPage = () => {
 
                         {/* Oauth section  */}
                         <Link to="/"
-                            className='w-full mt-5 bg-white text-center font-semibold duration-500 hover:shadow-lg hover:shadow-slate-400 transition-all text-black px-5 py-2 rounded-md hover:rounded-full'> 🔐
+                              className='w-full mt-5 bg-white text-center font-semibold duration-500 hover:shadow-lg hover:shadow-slate-400 transition-all text-black px-5 py-2 rounded-md hover:rounded-full'> 🔐
                             Login with Google</Link>
 
                         {/* Extra section */}

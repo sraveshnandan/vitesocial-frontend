@@ -2,13 +2,16 @@ import { Link } from "react-router-dom";
 import Avatar from "../components/Avatar";
 import Card from "../components/Card";
 import Layout from "../components/Layouts/Layout";
-import {  useState } from "react";
+import {useContext, useState} from "react";
+import {UserContext} from "../context/UserContext.jsx";
 
 
 
 export const ProfilePage = () => {
+  const {Profile} = useContext(UserContext);
+
   const [path] = useState(window.location.hash);
-console.log(path);
+console.log(Profile);
 
 const url2 = window.location.href;
 console.log(url2)
@@ -20,18 +23,18 @@ console.log(url2)
     <Layout>
       <Card >
         {/* Outer section  */}
-        <div className="relative">
+        <div className="relative ">
           {/* inner section  */}
           < div className=" cover rounded-md overflow-hidden">
             {/* Cover img  */}
-            <div className="bg-violet-500 w-full rounded-md h-[180px]"></div>
+            <div className="bg-gradient-to-tl from-rose-400 via-fuchsia-500 to-indigo-500 w-full rounded-md h-[180px]"></div>
             {/* Profile img  */}
-            <div className="absolute top-[8.55rem] left-4    ">
-              <Avatar size={'md'} />
+            <div className="absolute  top-[8.55rem] left-4    ">
+              <Avatar size={'md'} img={Profile?.avatar?.public_url} />
             </div>
             {/* User Details  */}
             <div className="   pl-[8rem] pb-1  ">
-              <span className="font-semibold text-xl" >User Name</span>
+              <span className="font-semibold text-xl" >{Profile?.fullName}</span>
               <br />
               <span className="text-slate-500 leading-4 text-sm">State, Country</span>
             </div>

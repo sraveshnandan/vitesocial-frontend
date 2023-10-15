@@ -3,10 +3,26 @@ import {useState} from "react";
 
 
 import FormLayout from "../components/Layouts/FormLayout.jsx";
+import axios, {toFormData} from "axios";
 
 const Register = () => {
     const [username, setusername] = useState("");
+    const [fullName, setFullname] = useState("");
+    const [email, setEmail] = useState("");
+    const [conf_password, setConf_password] = useState()
     const [password, setpassword] = useState("");
+
+    const handleRegister = (ev)=>{
+        ev.preventDefault();
+
+        axios.post("/user/register", {username,fullName,email,password}).then(data=>{
+            console.log(data.data);
+            alert(data.data.message);
+            window.location.replace("/login")
+
+        })
+
+    }
 
     return (<>
 
@@ -21,7 +37,7 @@ const Register = () => {
                    </div>
 
                    <div className="w-full mt-3">
-                       <form className="w-full flex flex-col">
+                       <form onSubmit={handleRegister} className="w-full flex flex-col">
                            <input
                                className="w-80% px-5 py-2 mb-2 rounded-md font-semibold "
                                type="text"
@@ -34,21 +50,21 @@ const Register = () => {
                                className="w-80% px-5 py-2 mb-2 rounded-md font-semibold "
                                type="text"
                                placeholder="Full Name"
-                               value={username}
-                               onChange={ev => setusername(ev.target.value)}
+                               value={fullName}
+                               onChange={ev => setFullname(ev.target.value)}
                            />
 
                            <input
                                className="w-80% px-5 py-2 mb-2 rounded-md font-semibold "
                                type="text"
                                placeholder="Email"
-                               value={username}
-                               onChange={ev => setusername(ev.target.value)}
+                               value={email}
+                               onChange={ev => setEmail(ev.target.value)}
                            />
 
                            <input
                                className="w-80% px-5 py-2 mb-2 rounded-md font-semibold "
-                               type="text"
+                               type="password"
                                placeholder="Password"
                                value={password}
                                onChange={ev => setpassword(ev.target.value)}
@@ -56,10 +72,10 @@ const Register = () => {
 
                            <input
                                className="w-80% px-5 py-2 mb-2 rounded-md font-semibold "
-                               type="text"
+                               type="password"
                                placeholder="Conferm Password"
-                               value={username}
-                               onChange={ev => setusername(ev.target.value)}
+                               value={conf_password}
+                               onChange={ev => setConf_password(ev.target.value)}
                            />
 
                            <div className="flex gap-2 mb-2"><input id="check" type="checkbox"/> <label
