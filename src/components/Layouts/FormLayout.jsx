@@ -15,7 +15,7 @@ export default function FormLayout({children}) {
                     {children}
 
                     {/*next box*/}
-                    <div className="md:w-1/2  rounded-md bg-sky-400">
+                    <div className="md:w-1/2  rounded-md bg-gradient-to-bl from-fuchsia-600 to-pink-600">
                         {/*Img box*/}
                     </div>
 

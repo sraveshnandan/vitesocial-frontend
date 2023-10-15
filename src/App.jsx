@@ -20,7 +20,7 @@ function App() {
 
     const navigate = useNavigate();
     //axios configuration
-    axios.defaults.baseURL = "http://localhost:8000";
+    axios.defaults.baseURL = "https://vitesocial-backend-server.onrender.com";
     axios.defaults.withCredentials = true;
         //Context configurations
     const {  setUsers ,setProfile, Profile, setPosts, setMyposts} = useContext(UserContext);
